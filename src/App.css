@@ -1,0 +1,10 @@
+.bg-img{
+    background: url('src/assets/images/background.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+.bg-shadow{
+    background-color: rgba(0, 0, 0, 0.799);
+    backdrop-filter: blur(10px);
+}
