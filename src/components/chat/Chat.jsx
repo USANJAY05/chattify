@@ -9,8 +9,9 @@ import { FaCamera } from "react-icons/fa";
 import EmojiPicker from 'emoji-picker-react';
 import { RiSendPlaneFill } from "react-icons/ri";
 import { MdEmojiEmotions } from "react-icons/md";
+import '../../App.css'
 
-const Chat = () => {
+const Chat = ({i,setI}) => {
     const [open,setOpen]=useState(false)
     const [text,setText]=useState('')
     const handleEmoji=(e)=>{
@@ -19,7 +20,7 @@ const Chat = () => {
     }
   return (
     <div className='w-full h-full flex flex-col'>
-        <div className='flex justify-between items-center p-2 border-b'>
+        <div className='flex justify-between items-center p-2 border-b border-gray-600'>
             <div className='flex gap-2'>
                 <img src={avatar} alt="" className='w-12 h-12' />
                 <div>
@@ -30,7 +31,7 @@ const Chat = () => {
             <div className='flex gap-4 text-2xl'>
                 <FaPhoneAlt />
                 <IoIosVideocam />
-                <IoMdInformationCircleOutline />
+                <IoMdInformationCircleOutline onClick={()=>setI(!i)} />
             </div>
         </div>
         <div className='h-full flex flex-col gap-3 p-4 overflow-auto'>
@@ -171,14 +172,15 @@ const Chat = () => {
             </div>
             
         </div>
-        <div className='flex text-2xl gap-4 p-10 items-center'>
+        <div className='flex text-2xl gap-4 p-6 pt-2 items-center'>
             <AiFillPicture className='text-4xl' />
             <FaCamera />
             <FaMicrophone />
             <div className='w-full relative'>
                 <input
                     type="text"
-                    className='w-full p-2 bg-inherit outline-none border rounded-md text-lg'
+                    className='w-full p-2 bg-inherit outline-none border border-gray-400 rounded-md text-lg'
+                    placeholder='Enter the message'
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
@@ -193,7 +195,7 @@ const Chat = () => {
                     <div className='relative w-full'>
                     {open && (
                         <div className='absolute bottom-10 right-0'>
-                        <EmojiPicker onEmojiClick={handleEmoji} />
+                        <EmojiPicker onEmojiClick={handleEmoji} className='emoji-picker-react' />
                         </div>
                     )}
                     </div>

@@ -8,3 +8,16 @@
     background-color: rgba(0, 0, 0, 0.799);
     backdrop-filter: blur(10px);
 }
+
+/* Custom styles for the EmojiPicker */
+/* 
+.emoji-picker-react {
+    background-color: #000000df !important;
+    border: none;
+    border-radius: 8px; 
+  }
+  
+  .emoji-picker-react .emoji-scroll-wrapper {
+    background-color: #e0e0e0 !important; 
+  }
+  */
