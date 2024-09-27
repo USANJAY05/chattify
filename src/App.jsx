@@ -4,6 +4,7 @@ import List from './components/list/List'
 import Chat from './components/chat/Chat'
 import Detail from './components/detail/Detail'
 import Login from './components/login/Login'
+import Notification from './components/notification/Notification'
 
 const App = () => {
   const [i,setI]=useState(false)
@@ -15,7 +16,7 @@ const App = () => {
       </div>
       <div className='absolute flex h-screen dark:text-white w-full bg-shadow '>
           {
-            !user?(
+            user?(
               <>
                 <List />
                 <Chat setI={setI} i={i} />
@@ -23,6 +24,7 @@ const App = () => {
               </>
             ):(<Login />)
           }
+          <Notification />
       </div>
     </div>
   )
