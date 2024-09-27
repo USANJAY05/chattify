@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import avatar from '../../assets/avatars/avatar8.png'
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosVideocam } from "react-icons/io";
@@ -14,6 +14,10 @@ import '../../App.css'
 const Chat = ({i,setI}) => {
     const [open,setOpen]=useState(false)
     const [text,setText]=useState('')
+    const endRef=useRef(null)
+    useEffect(()=>{
+        endRef.current?.scrollIntoView({behavior:"smooth"})
+    },[])
     const handleEmoji=(e)=>{
         setText(prev=>prev+e.emoji)
         setOpen(false)
@@ -40,14 +44,18 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>3 minutes ago</small>
                 </div>
             </div>
             <div className='flex justify-start'>
-                <div className='w-1/2'>
+                <div className='w-1/2 '>
                 <img src="https://imgs.search.brave.com/vRVARKONCxcP-A_N_7K4kqhtdUJwca9WW1dXUq-W10Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni84MzQ2LzgzNDYw/OTkucG5nP3NlbXQ9/YWlzX2h5YnJpZA" className='rounded-lg h-52' alt="" />
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>just now</small>
                 </div>
             </div>
 
@@ -57,13 +65,17 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus deleniti ratione soluta sit veritatis esse libero distinctio natus ad expedita?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>just now</small>
                 </div>
             </div>
             <div className='flex justify-start'>
-                <div className='w-1/2'>
+                <div className='w-1/2 flex flex-col'>
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam blanditiis, architecto recusandae eos maiores quibusdam?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-end'>
@@ -71,6 +83,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi how are you? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque harum obcaecati odit assumenda delectus minima aliquam quo sint. Quo consectetur provident libero iure modi quis non nobis suscipit, laboriosam adipisci?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-start'>
@@ -78,6 +92,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
 
@@ -88,6 +104,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-start'>
@@ -95,6 +113,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
 
@@ -103,6 +123,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus deleniti ratione soluta sit veritatis esse libero distinctio natus ad expedita?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-start'>
@@ -110,6 +132,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam blanditiis, architecto recusandae eos maiores quibusdam?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-end'>
@@ -117,6 +141,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi how are you? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque harum obcaecati odit assumenda delectus minima aliquam quo sint. Quo consectetur provident libero iure modi quis non nobis suscipit, laboriosam adipisci?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-start'>
@@ -124,6 +150,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
 
@@ -132,6 +160,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-start'>
@@ -139,6 +169,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
 
@@ -147,6 +179,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus deleniti ratione soluta sit veritatis esse libero distinctio natus ad expedita?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-start'>
@@ -154,6 +188,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam blanditiis, architecto recusandae eos maiores quibusdam?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-end'>
@@ -161,6 +197,8 @@ const Chat = ({i,setI}) => {
                     <p className='bg-blue-500 inline-block p-3 rounded-lg'>
                         hi how are you? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque harum obcaecati odit assumenda delectus minima aliquam quo sint. Quo consectetur provident libero iure modi quis non nobis suscipit, laboriosam adipisci?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
             <div className='flex justify-start'>
@@ -168,9 +206,12 @@ const Chat = ({i,setI}) => {
                     <p className='bg-slate-700 inline-block p-3 rounded-lg'>
                         hi how are you?
                     </p>
+                    <br />
+                    <small className='text-gray-500'>1 minute ago</small>
                 </div>
             </div>
-            
+            <div ref={endRef}></div>
+
         </div>
         <div className='flex text-2xl gap-4 p-6 pt-2 items-center'>
             <AiFillPicture className='text-4xl' />
