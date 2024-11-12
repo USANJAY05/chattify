@@ -44,6 +44,7 @@ To containerize the React application, you can use Docker to create an image and
 ## Prerequisites
 
 Ensure Docker is installed and running on your machine.
+   ```bash
 
 ## Docker Build and Run Steps
 
