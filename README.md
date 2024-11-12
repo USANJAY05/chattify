@@ -60,35 +60,3 @@ After building the image, start a container with:
     docker run -p 3000:3000 agentm-frontend
 
 This will start the application in a container, accessible at http://localhost:3000.
-
-Dockerfile Overview
-
-Here is a simple Dockerfile setup for this React application:
-
-# Use an official Node.js image as the base
-FROM node:14-alpine
-
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code to the container
-COPY . .
-
-# Build the application
-RUN npm run build
-
-# Expose port 3000 to be accessible outside the container
-EXPOSE 3000
-
-# Start the application in production mode
-CMD ["npx", "serve", "-s", "build"]
-
-In this Dockerfile:
-	•	The application is built using npm run build.
-	•	The serve package (installed automatically) is used to serve the optimized production build.
