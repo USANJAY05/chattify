@@ -37,26 +37,20 @@ This will create an optimized production build in the build folder.
 
 
 
-Docker Setup (Optional)
+# Docker Setup (Optional)
 
 To containerize the React application, you can use Docker to create an image and run it in a container.
 
-Prerequisites
+## Prerequisites
 
 Ensure Docker is installed and running on your machine.
 
-Docker Build and Run Steps
+## Docker Build and Run Steps
 
 1.	Build the Docker image:
-In the root directory of the project (where the Dockerfile is located), build the Docker image by running:
-
     docker build -t agentm-frontend .
 
-This command builds the Docker image and tags it as agentm-frontend.
-
 2.	Run the Docker container:
-After building the image, start a container with:
-
     docker run -p 3000:3000 agentm-frontend
 
 This will start the application in a container, accessible at http://localhost:3000.
