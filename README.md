@@ -1,3 +1,5 @@
+Here’s a refined and well-structured guide and Dockerfile setup for your React application:
+
 React Application Setup Guide
 
 This document outlines the steps to set up and run the React application.
@@ -29,7 +31,7 @@ npm install
 
 npm start
 
-The application should now be available at http://localhost:3000/.
+The application should now be available at http://localhost:3000.
 
 	4.	(Optional) Build for production:
 
@@ -60,12 +62,12 @@ docker run -p 3000:3000 agentm-frontend
 
 This will start the application in a container, accessible at http://localhost:3000.
 
-Dockerfile Overview
+Dockerfile Setup
 
-Here is a simple Dockerfile setup for this React application:
+Here is a well-organized Dockerfile for this React application:
 
-# Use an official Node.js image as the base
-FROM node:14-alpine
+# Use an official Node.js image as the base image
+FROM node:14-alpine AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -82,12 +84,24 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Expose port 3000 to be accessible outside the container
-EXPOSE 3000
+# Use a lightweight server to serve the built files
+FROM nginx:alpine
 
-# Start the application in production mode using serve
-CMD ["npx", "serve", "-s", "build"]
+# Copy the built files from the build stage to the Nginx html directory
+COPY --from=build /app/build /usr/share/nginx/html
 
-In this Dockerfile:
-	•	The application is built using npm run build.
-	•	The serve package (pre-installed in Docker’s Node image) is used to serve the optimized production build.
+# Expose port 80 for the web server
+EXPOSE 80
+
+# Start the Nginx server
+CMD ["nginx", "-g", "daemon off;"]
+
+Explanation of Dockerfile:
+
+	1.	Multi-Stage Build: The Dockerfile uses a multi-stage build to optimize the final image size.
+	•	First Stage (build): Uses the Node.js image to install dependencies and build the React app.
+	•	Second Stage (nginx): Uses the Nginx image to serve the static build files.
+	2.	Efficient Serving: The Nginx server serves the production build efficiently, reducing the image size and improving performance.
+	3.	Expose Port 80: By exposing port 80, you can access the application on http://localhost when the container is run.
+
+This setup provides a clear and optimized configuration for both local development and containerized deployment. Let me know if there’s anything else you’d like to adjust!
