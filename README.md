@@ -1,73 +1,88 @@
-Here’s a refined and well-structured guide and Dockerfile setup for your React application:
+# AgentM Frontend
 
-React Application Setup Guide
+This repository contains the frontend code for the AgentM application.
 
-This document outlines the steps to set up and run the React application.
+### Prerequisites
 
-Prerequisites
+Before you can run this application, ensure you have the following installed:
 
-Ensure you have the following installed:
-	•	Node.js (version >= 14.x)
-	•	npm (Node package manager, which comes with Node.js)
-	•	Git
+* **Node.js (version >= 14.x)**: Download and install from [https://nodejs.org/](https://nodejs.org/)
+* **npm (Node package manager)**: Included with Node.js installation
+* **Git**: Download and install from [https://git-scm.com/](https://git-scm.com/)
 
-Installation Steps
+### Installation and Setup
 
-	1.	Clone the repository:
+1. **Clone the Repository:**
 
-git clone https://github.com/Bot2do-Technologies/agentm-frontend.git
+   ```bash
+   git clone https://github.com/Bot2do-Technologies/agentm-frontend.git
+   ```
 
-Navigate to the project directory:
+2. **Navigate to Project Directory:**
 
-cd agentm-frontend
+   ```bash
+   cd agentm-frontend
+   ```
 
+3. **Install Dependencies:**
 
-	2.	Install dependencies:
+   ```bash
+   npm install
+   ```
 
-npm install
+4. **Start Development Server:**
 
+   ```bash
+   npm start
+   ```
 
-	3.	Start the development server:
+   The application will be accessible at `http://localhost:3000/`.
 
-npm start
+### Production Build
 
-The application should now be available at http://localhost:3000.
+To build the application for production, run:
 
-	4.	(Optional) Build for production:
-
+```bash
 npm run build
+```
 
-This will create an optimized production build in the build folder.
+This will create an optimized production build in the `build` folder.
 
-Docker Setup (Optional)
+### Docker Setup (Optional)
 
-To containerize the React application, you can use Docker to create an image and run it in a container.
+This section outlines how to containerize the React application using Docker.
 
-Prerequisites
+#### Prerequisites
 
-Ensure Docker is installed and running on your machine.
+Ensure you have Docker installed and running on your machine:
 
-Docker Build and Run Steps
+* **Docker:** Download and install from [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 
-	1.	Build the Docker image:
-In the root directory of the project (where the Dockerfile is located), run the following command to build the Docker image:
+#### Docker Build and Run
 
-docker build -t agentm-frontend .
+1. **Build Docker Image:**
 
+   ```bash
+   docker build -t agentm-frontend .
+   ```
 
-	2.	Run the Docker container:
-After building the image, start a container with:
+   This command will build a Docker image named `agentm-frontend` based on the `Dockerfile` in the project root.
 
-docker run -p 3000:3000 agentm-frontend
+2. **Run Docker Container:**
 
-This will start the application in a container, accessible at http://localhost:3000.
+   ```bash
+   docker run -p 3000:3000 agentm-frontend
+   ```
 
-Dockerfile Setup
+   This will start a container from the built image, exposing port 3000 to the host machine. The application will be accessible at `http://localhost:3000/`.
 
-Here is a well-organized Dockerfile for this React application:
+#### Dockerfile Overview
 
-# Use an official Node.js image as the base image
-FROM node:14-alpine AS build
+The included `Dockerfile` configures the Docker image for the application:
+
+```dockerfile
+# Use an official Node.js image as the base
+FROM node:14-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -84,24 +99,11 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Use a lightweight server to serve the built files
-FROM nginx:alpine
+# Expose port 3000 to be accessible outside the container
+EXPOSE 3000
 
-# Copy the built files from the build stage to the Nginx html directory
-COPY --from=build /app/build /usr/share/nginx/html
+# Start the application in production mode using serve
+CMD ["npx", "serve", "-s", "build"]
+```
 
-# Expose port 80 for the web server
-EXPOSE 80
-
-# Start the Nginx server
-CMD ["nginx", "-g", "daemon off;"]
-
-Explanation of Dockerfile:
-
-	1.	Multi-Stage Build: The Dockerfile uses a multi-stage build to optimize the final image size.
-	•	First Stage (build): Uses the Node.js image to install dependencies and build the React app.
-	•	Second Stage (nginx): Uses the Nginx image to serve the static build files.
-	2.	Efficient Serving: The Nginx server serves the production build efficiently, reducing the image size and improving performance.
-	3.	Expose Port 80: By exposing port 80, you can access the application on http://localhost when the container is run.
-
-This setup provides a clear and optimized configuration for both local development and containerized deployment. Let me know if there’s anything else you’d like to adjust!
+This Dockerfile builds the application, exposes port 3000, and uses the `serve` package (pre-installed in Docker's Node image) to serve the optimized production build.
