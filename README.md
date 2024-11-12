@@ -36,7 +36,6 @@ The application should now be available at http://localhost:3000/.
 This will create an optimized production build in the build folder.
 
 
-To add Docker support for building and running the application in a container, you can extend the setup guide as follows:
 
 Docker Setup (Optional)
 
@@ -48,17 +47,17 @@ Ensure Docker is installed and running on your machine.
 
 Docker Build and Run Steps
 
-	1.	Build the Docker image:
+1.	Build the Docker image:
 In the root directory of the project (where the Dockerfile is located), build the Docker image by running:
 
-docker build -t agentm-frontend .
+    docker build -t agentm-frontend .
 
 This command builds the Docker image and tags it as agentm-frontend.
 
-	2.	Run the Docker container:
+2.	Run the Docker container:
 After building the image, start a container with:
 
-docker run -p 3000:3000 agentm-frontend
+    docker run -p 3000:3000 agentm-frontend
 
 This will start the application in a container, accessible at http://localhost:3000.
 
