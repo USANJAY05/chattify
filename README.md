@@ -1,8 +1,8 @@
-## AgentM Frontend
+# AgentM Frontend
 
 This repository contains the frontend code for the AgentM application.
 
-### Overview
+## Overview
 
 The AgentM Frontend is a React application built with modern best practices. This README provides instructions for setting up and running the project, including:
 
@@ -12,7 +12,7 @@ The AgentM Frontend is a React application built with modern best practices. Thi
 * **Building for Production:** Creating an optimized build for deployment
 * **Docker Setup (Optional):**  Containerizing the application for portability
 
-### Prerequisites
+## Prerequisites
 
 Before you can run the application, ensure you have the following installed:
 
@@ -21,7 +21,7 @@ Before you can run the application, ensure you have the following installed:
 * **Git:** Download and install from [https://git-scm.com/](https://git-scm.com/)
 * **(Optional) Docker:** Download and install from [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop) if you plan to use Docker.
 
-### Installation and Setup
+## Installation and Setup
 
 1. **Clone the Repository:**
 
@@ -61,7 +61,7 @@ npm run build
 
 This will create an optimized production build in the `build` folder. This build can then be deployed to a web server.
 
-### Docker Setup (Optional)
+## Docker Setup (Optional)
 
 This section outlines how to containerize the React application using Docker.
 
