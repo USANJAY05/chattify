@@ -48,9 +48,11 @@ Ensure Docker is installed and running on your machine.
 ## Docker Build and Run Steps
 
 1.	Build the Docker image:
+
     docker build -t agentm-frontend .
 
 2.	Run the Docker container:
+
     docker run -p 3000:3000 agentm-frontend
 
 This will start the application in a container, accessible at http://localhost:3000.
